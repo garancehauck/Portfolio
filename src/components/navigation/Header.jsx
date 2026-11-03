@@ -36,8 +36,8 @@ const Header = () => {
     { label: t("header.home"), id: "home-section" },
     { label: t("header.about"), id: "about-section" },
     { label: "Aid’& moi", path: "/aid-et-moi" },
-    { label: t("header.skills"), id: "skills-section" },
     { label: t("header.projects"), id: "projects-section" },
+    { label: t("header.skills"), id: "skills-section" },
     { label: "Contact", id: "contact-section" },
   ];
 
