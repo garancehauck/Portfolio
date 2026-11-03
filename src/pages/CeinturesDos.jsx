@@ -145,10 +145,10 @@ export default function CeinturesDos() {
               Visuel principal du dispositif
             </p>
             <img
-            src="/assets/images/proto_final_lombaire.png"
-            alt="Photo de la ceinture lombaire"
-            className="max-h-[420px] w-full rounded-xl object-contain"
-          />
+              src={`${import.meta.env.BASE_URL}assets/images/proto_final_lombaire.png`}
+              alt="Photo de la ceinture lombaire"
+              className="max-h-[420px] w-full rounded-xl object-contain"
+            />
           </div>
         </div>
       </section>

@@ -33,7 +33,7 @@ const AidEtMoiPreview = () => {
         {/* Image à droite */}
         <div className="flex min-h-56 items-center justify-center rounded-2xl bg-[#F5F5F7] p-5">
           <img
-            src="/assets/images/logo_aidetmoi.png"
+            src={`${import.meta.env.BASE_URL}assets/images/logo_aidetmoi.png`}
             alt="Présentation de l'activité Aid’& moi"
             className="max-h-72 w-full rounded-xl object-contain"
           />

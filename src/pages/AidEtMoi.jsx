@@ -142,7 +142,7 @@ export default function AidEtMoi() {
 
           <div className="flex items-center justify-center rounded-2xl bg-white p-5 md:p-7">
             <img
-              src="/assets/images/logo_aidetmoi.png"
+              src={`${import.meta.env.BASE_URL}assets/images/logo_aidetmoi.png`}
               alt="Logo Aid’& moi"
               className="max-h-56 w-full object-contain"
             />

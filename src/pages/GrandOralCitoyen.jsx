@@ -119,7 +119,7 @@ const GrandOralCitoyen = () => {
 
           <figure className="overflow-hidden rounded-2xl border border-white/15 bg-white/10 p-2">
             <img
-              src="/assets/images/accueil_GOC.png"
+              src={`${import.meta.env.BASE_URL}assets/images/accueil_GOC.png`}
               alt="Capture d’écran de la page d’accueil du site Grand Oral Citoyen"
               className="w-full rounded-xl object-contain"
             />
@@ -274,7 +274,7 @@ const GrandOralCitoyen = () => {
 
         <figure className="mt-7 overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-3">
           <img
-            src="/assets/images/accueil_admin_GOC.png"
+            src={`${import.meta.env.BASE_URL}assets/images/accueil_admin_GOC.png`}
             alt="Capture d’écran de la page d’accueil de la partie administrateur du site Grand Oral Citoyen"
             className="max-h-[420px] w-full rounded-xl object-contain"
           />

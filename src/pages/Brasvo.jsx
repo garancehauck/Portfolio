@@ -172,7 +172,7 @@ export default function Brasvo() {
 
         <figure className="overflow-hidden rounded-2xl bg-[#F5F5F7] p-3">
           <img
-            src="/assets/images/orthese.png"
+            src={`${import.meta.env.BASE_URL}assets/images/orthese.png`}
             alt="Vue d’ensemble du prototype d’orthèse Bra(s)vo"
             className="max-h-[360px] w-full rounded-xl object-contain"
           />
