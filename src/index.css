@@ -1,32 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Comfortaa:wght@300..700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --color-background: #97B7E3;
-  --color-main: #2F80E4;
-  --color-accent: #772CA9;
-  --color-black: #0A111A;
-  --color-white: #DCDCDC;
-  --color-main-hover: #5A8DD3;
-  --color-bg-menu: #7AA4DC;
-  --color-bg-menu-hover: #5E8AC5;
-  --color-accent-hover: #481A66;
-  --color-black-hover: rgba(10, 17, 26, 0.2);
 
-  --color-dark-background: #232E3E;
-  --color-dark-main: #446B9C;
-  --color-dark-accent: #754B92;
-  --color-dark-main-hover: #4D5E78;
-  --color-dark-bg-menu: #7AA4DC;
-  --color-dark-bg-menu-hover: #5E8AC5;
-  --color-dark-accent-hover: #433151;
+
+@theme {
+  --color-background: #F5F5F7;
+  --color-main: #1B00C9;
+  --color-accent: #F23850;
+  --color-black: #171717;
+  --color-white: #FFFFFF;
+  --color-main-hover: #3320E8;
+  --color-bg-menu: #FFFFFF;
+  --color-bg-menu-hover: #EAEAF2;
+  --color-accent-hover: #D92740;
+  --color-black-hover: rgba(23, 23, 23, 0.12);
+
+  --color-dark-background: #100A45;
+  --color-dark-main: #1B00C9;
+  --color-dark-accent: #F23850;
+  --color-dark-main-hover: #3320E8;
+  --color-dark-bg-menu: #1B164F;
+  --color-dark-bg-menu-hover: #29215F;
+  --color-dark-accent-hover: #D92740;
 
   --font-main: "Comfortaa", sans-serif;
-
-  --shadow-small: 2px 4px 4px rgba(0, 0, 0, 0.2);
+  --shadow-small: 2px 4px 4px rgba(16, 10, 69, 0.12);
 }
+
+
 
 * {
     box-sizing: border-box;
@@ -133,4 +136,200 @@ html {
   animation: none !important;
   transition: none !important;
   scroll-behavior: auto !important;
+}
+
+
+/* ========================================
+   IDENTITÉ GRAPHIQUE AID'& MOI
+======================================== */
+
+/* Petites annotations manuscrites */
+.handwritten {
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Petit intitulé au-dessus des titres */
+.section-kicker {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #F23850;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Titres de sections */
+.section-title {
+  color: #1B00C9;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+/* Petite annotation décorative */
+.handwritten-note {
+  font-family: "Caveat", cursive;
+  color: #F23850;
+  font-size: 1.35rem;
+  font-weight: 600;
+  transform: rotate(-3deg);
+}
+
+/* Soulignement graphique */
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.title-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 65%;
+  height: 3px;
+  border-radius: 50%;
+  background: #F23850;
+  transform: rotate(-2deg);
+}
+
+/* Liens avec petite animation */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1B00C9;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: gap 200ms ease, color 200ms ease;
+}
+
+.arrow-link:hover {
+  gap: 0.8rem;
+  color: #F23850;
+}
+
+/* Blocs avec des coins plus doux */
+.soft-card {
+  border: 1px solid rgba(27, 0, 201, 0.08);
+  border-radius: 1.25rem;
+  background: #FFFFFF;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.soft-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(27, 0, 201, 0.08);
+}
+
+/* Respect des préférences de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .soft-card,
+  .arrow-link {
+    transition: none;
+  }
+
+  .soft-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ========================================
+   MODE NUIT
+======================================== */
+
+:root {
+  color-scheme: light;
+  --site-background: #F5F5F7;
+  --site-surface: #FFFFFF;
+  --site-text: #171717;
+  --site-muted: #626273;
+  --site-border: rgba(27, 0, 201, 0.10);
+}
+
+.dark {
+  color-scheme: dark;
+  --site-background: #100A45;
+  --site-surface: #1B164F;
+  --site-text: #F5F3FF;
+  --site-muted: #C2BED8;
+  --site-border: rgba(255, 255, 255, 0.12);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--site-background);
+  color: var(--site-text);
+  font-family: var(--font-main);
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+/* Fonds et textes principaux */
+.dark .soft-card {
+  background: var(--site-surface);
+  border-color: var(--site-border);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.dark .soft-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.dark .section-title {
+  color: #A99EFF;
+}
+
+.dark .section-kicker,
+.dark .handwritten-note {
+  color: #FF8291;
+}
+
+.dark .arrow-link {
+  color: #A99EFF;
+}
+
+.dark .arrow-link:hover {
+  color: #FF8291;
+}
+
+/* Bordures et séparateurs */
+.dark hr {
+  border-color: var(--site-border);
+}
+
+/* Champs de formulaire */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--site-surface);
+  color: var(--site-text);
+  border-color: var(--site-border);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #AAA5C5;
+}
+
+/* Liens et boutons */
+.dark button:focus-visible,
+.dark a:focus-visible {
+  outline-color: #A99EFF;
+}
+
+/* Respect des préférences de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }

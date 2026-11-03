@@ -1,16 +1,19 @@
+
+import { useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
-  Github,
-  Link,
-  Linkedin,
+  Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Carousel = ({ projects }) => {
-  const { t, i18n } = useTranslation("projects");
+const Carousel = ({ projects = [] }) => {
+  const { t } = useTranslation("projects");
   const [current, setCurrent] = useState(0);
+
+  if (projects.length === 0) return null;
 
   const prevSlide = () => {
     setCurrent((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -20,112 +23,107 @@ const Carousel = ({ projects }) => {
     setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
+  const project = projects[current];
+
   return (
-    <div className="relative w-[70%] mx-auto my-10 max-sm:w-full max-xl:w-10/12 readerMode:w-11/12">
-      <div className="overflow-hidden rounded-2xl shadow-lg mx-10 max-sm:mt-10 max-sm:mx-0 max-lg:mx-4">
-        <div
-          className="flex transition-transform duration-500"
-          style={{ transform: `translateX(-${current * 100}%)` }}
-        >
-          {projects.map((prjct, idx) => (
-            <div
-              key={idx}
-              className="relative w-full h-auto flex-shrink-0 max-md:h-auto"
-            >
+    <div className="relative mx-auto my-8 w-full max-w-5xl px-2 sm:px-12">
+      <article
+        className="overflow-hidden rounded-[2rem] border border-[#171717]/10 bg-white shadow-sm"
+        aria-live="polite"
+      >
+        <div className="grid md:grid-cols-2">
+          <div className="relative flex min-h-64 items-center justify-center overflow-hidden bg-[#F5F5F7] p-6 md:min-h-[350px]">
+            {project.path ? (
               <img
-                src={`/assets/images/${prjct.path}`}
+                src={`/assets/images/${project.path}`}
                 alt=""
-                className="w-full h-full object-cover object-top rounded-2xl bg-neutral-800 bg-gradient-to-b"
+                className="h-full max-h-[350px] w-full object-contain"
               />
+            ) : (
+              <img
+                src={`/assets/images/${project.image}`}
+                alt={`Illustration du projet ${project.name}`}
+                className="h-full max-h-[350px] w-full rounded-2xl object-contain"
+              />
+            )}
 
-              <div className="absolute bottom-0 mx-4 my-2 px-4 py-1 text-white bg-accent-hover dark:bg-dark-accent-hover rounded-xl w-[calc(100%-2rem)]">
-                <h2 className="text-2xl font-bold max-sm:text-lg max-lg:line-clamp-1">
-                  {prjct.name}
-                </h2>
-                <div className="flex flex-row items-center justify-between">
-                  <p className="text-xl mx-2 my-1 max-sm:text-base max-lg:line-clamp-1">
-                    <span className="font-bold">Technologies : </span>
-                    {prjct.tech}
-                  </p>
+            <span className="absolute left-5 top-5 rounded-full bg-[#1B00C9] px-4 py-2 text-xs font-bold text-white">
+              {String(current + 1).padStart(2, "0")} /{" "}
+              {String(projects.length).padStart(2, "0")}
+            </span>
+          </div>
 
-                  <a
-                    href={prjct.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={
-                      prjct.link.includes("github.com")
-                        ? t("git_label")
-                        : prjct.link.includes("linkedin.com")
-                          ? t("linkedin_label")
-                          : t("web_label")
-                    }
-                  >
-                    {prjct.link.includes("github.com") ? (
-                      <Github size={31} className="max-sm:w-7 max-sm:h-7" />
-                    ) : prjct.link.includes("linkedin.com") ? (
-                      <Linkedin
-                        size={27}
-                        strokeWidth={2}
-                        className="max-sm:w-7 max-sm:h-7"
-                      />
-                    ) : (
-                      <Link
-                        size={27}
-                        strokeWidth={2.5}
-                        className="max-sm:w-7 max-sm:h-7"
-                      />
-                    )}
-                  </a>
-                </div>
+          <div className="flex flex-col justify-center p-7 md:p-10">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.15em] text-[#F23850]">
+              Projet
+            </p>
+
+            <h3 className="mb-5 text-2xl font-bold leading-tight text-[#171717] md:text-3xl">
+              {project.name}
+            </h3>
+
+            {project.tech && (
+              <div className="mb-7">
+                <p className="mb-2 text-sm font-bold text-[#1B00C9]">
+                  Technologies et compétences
+                </p>
+                <p className="text-base leading-relaxed text-[#171717]/70">
+                  {project.tech}
+                </p>
               </div>
-            </div>
-          ))}
+            )}
+
+            {project.link && (
+              <Link
+                to={project.link}
+                className="inline-flex w-fit items-center gap-3 rounded-full bg-[#1B00C9] px-5 py-3 font-semibold text-white transition hover:bg-[#3320E8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1B00C9]"
+              >
+                Découvrir le projet
+                <ArrowUpRight size={19} />
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
+      </article>
 
-      {/* Arrows OUTSIDE the clipped area */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 -left-14 -translate-y-1/2 cursor-pointer border-black dark:border-white border-2 hover:bg-black-hover focus:bg-black-hover hover:dark:bg-white/15 focus:dark:bg-white/15 p-3 rounded-full max-sm:top-0 max-sm:left-1/3 max-sm:p-2"
-        aria-label={t("previous")}
-      >
-        <ChevronLeft
-          size={32}
-          strokeWidth={3}
-          className="text-black dark:text-white pr-0.5 max-sm:w-7 max-sm:h-7"
-        />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 -right-14 -translate-y-1/2 cursor-pointer border-black dark:border-white border-2 hover:bg-black-hover focus:bg-black-hover hover:dark:bg-white/15 focus:dark:bg-white/15 p-3 rounded-full max-sm:top-0 max-sm:right-1/3 max-sm:p-2"
-        aria-label={t("next")}
-      >
-        <ChevronRight
-          size={32}
-          strokeWidth={3}
-          className="text-black dark:text-white pl-0.5 max-sm:w-7 max-sm:h-7"
-        />
-      </button>
+      {projects.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={prevSlide}
+            aria-label={t("previous")}
+            className="absolute left-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#1B00C9]/20 bg-white text-[#1B00C9] shadow-md transition hover:bg-[#1B00C9] hover:text-white"
+          >
+            <ChevronLeft size={25} />
+          </button>
 
-      {/* Dots */}
-      <ul className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2 bg-neutral-700/80 px-3 py-1.5 rounded-full">
-        {projects.map((_, idx) => (
-          <li key={idx} className="flex">
-            <button
-              type="button"
-              onClick={() => setCurrent(idx)}
-              aria-current={idx === current ? "true" : undefined}
-              className={`block w-3 h-3 rounded-full cursor-pointer hover:bg-white focus:bg-white focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-white ${
-                idx === current ? "bg-white" : "bg-gray-400"
-              }`}
-            >
-              <span className="sr-only">
-                {`${i18n.language === "fr" ? "Projet" : "Project"} ${idx + 1}`}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
+          <button
+            type="button"
+            onClick={nextSlide}
+            aria-label={t("next")}
+            className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#1B00C9]/20 bg-white text-[#1B00C9] shadow-md transition hover:bg-[#1B00C9] hover:text-white"
+          >
+            <ChevronRight size={25} />
+          </button>
+
+          <div className="mt-6 flex justify-center gap-2">
+            {projects.map((item, index) => (
+              <button
+                key={`${item.name}-${index}`}
+                type="button"
+                onClick={() => setCurrent(index)}
+                aria-label={`Projet ${index + 1}`}
+                aria-current={index === current ? "true" : undefined}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  index === current
+                    ? "w-8 bg-[#1B00C9]"
+                    : "w-2.5 bg-[#171717]/20 hover:bg-[#F23850]"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

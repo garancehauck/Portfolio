@@ -1,13 +1,13 @@
 {
   "home": {
-    "title": "Home",
-    "1": "Salut, je suis",
-    "2": "Développeuse fullstack",
-    "3": "Auditrice en accessibilité numérique",
-    "4": "Étudiante en Master 2 Technologies et handicaps"
+    "title": "Accueil",
+    "1": "Bonjour, je suis",
+    "2": "Ergothérapeute",
+    "3": "Étudiante en Master Technologie et Handicap",
+    "4": "Passionnée par l'innovation et l'accessibilité"
   },
   "about": {
     "title": "À propos",
-    "content": "Passionnée par les jeux vidéo et l'art, j'ai naturellement trouvé ma voie dans l'informatique. Je me suis spécialisée dans le développement de logiciels, où je peux exprimer ma créativité à travers le code et concevoir des solutions aussi fonctionnelles qu'esthétiques."
+    "content": "Ergothérapeute de formation et étudiante en Master MIASHS, parcours Technologie et Handicap, je m'intéresse à la conception de solutions qui favorisent l'autonomie et la participation de chacun. À travers mes projets en innovation, domotique, technologies d'assistance et accessibilité numérique, je cherche à faire le lien entre les besoins des personnes, les usages et les possibilités offertes par la technologie."
   }
 }

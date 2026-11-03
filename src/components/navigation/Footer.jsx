@@ -1,41 +1,23 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import AccessibilityDialog from "../AccessibilityDialog";
 
 const Footer = () => {
-  const { t } = useTranslation("navigation");
-  const [isDialogOpen, setDialogOpen] = useState(false);
-
-  const openDialog = () => {
-    setDialogOpen(true);
-  };
-
-  const closeDialog = () => {
-    setDialogOpen(false);
-  };
-
   return (
-    <>
-      <footer
-        className="flex mx-auto my-2 text-center text-lg font-bold max-lg:text-base max-lg:flex-col"
-        role="contentinfo"
-      >
-        <button
-          type="button"
-          className="rounded-lg transition-colors duration-500 hover:bg-main-hover focus:bg-main-hover hover:dark:bg-dark-main-hover focus:dark:bg-dark-main-hover cursor-pointer underline py-1 px-2.5 mr-0.5"
-          onClick={openDialog}
-        >
-          {t("accessibility.accessibility_rate")}
-        </button>
-        <p className="py-1">
-          <span className="inline max-lg:hidden mr-2" aria-hidden="true">
-            |
+    <footer
+      className="mx-auto mt-8 w-full border-t border-[#1B00C9]/10 px-6 py-6"
+      role="contentinfo"
+    >
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-center sm:flex-row sm:text-left">
+        <p className="text-xs font-semibold text-[#100A45]">
+          Garance HAUCK
+          <span className="ml-2 font-normal text-black/40">
+            © 2026
           </span>
-          Maha Bourada @ Copyright 2026
         </p>
-      </footer>
-      {isDialogOpen && <AccessibilityDialog onClose={closeDialog} />}
-    </>
+
+        <p className="text-xs text-black/45">
+          Ergothérapie · Technologie · Handicap
+        </p>
+      </div>
+    </footer>
   );
 };
 

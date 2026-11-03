@@ -1,149 +1,168 @@
+
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import SettingsBtns from "../global/SettingsBtns";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { i18n } = useTranslation();
   const { t } = useTranslation("navigation");
-  // language of the button label (label shows the target language)
-  const labelLang = i18n.language === "en" ? "fr" : "en";
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Only lock the background page scroll while the menu is open.
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
 
-  const handleLangSwitch = () => {
-    const newLang = i18n.language === "en" ? "fr" : "en";
-    i18n.changeLanguage(newLang);
+  const handleNavigation = (sectionId) => {
+    setIsOpen(false);
+
+    if (location.pathname === "/") {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
   };
+
+  const navItems = [
+    { label: t("header.home"), id: "home-section" },
+    { label: t("header.about"), id: "about-section" },
+    { label: "Aid’& moi", path: "/aid-et-moi" },
+    { label: t("header.skills"), id: "skills-section" },
+    { label: t("header.projects"), id: "projects-section" },
+    { label: "Contact", id: "contact-section" },
+  ];
 
   return (
     <header
       role="banner"
-      className={`z-10 py-4 my-4 mx-5 text-2xl max-xl:text-xl fixed w-[97%] rounded-2xl bg-[#81A8DD] shadow-small dark:bg-[#384A64] max-lg:bg-background max-lg:m-0 max-lg:w-full max-lg:rounded-none ${
+      className={`fixed z-50 mx-5 my-4 w-[97%] rounded-2xl bg-[#1B00C9] px-5 py-3 text-white shadow-small max-lg:mx-0 max-lg:my-0 max-lg:w-full max-lg:rounded-none ${
         isOpen ? "max-lg:h-screen" : "max-lg:h-fit"
       }`}
     >
-      <div className="flex flex-row items-center justify-between lg:hidden">
-        <div className="flex flex-row items-center ml-3">
-          <SettingsBtns />
+      {/* BARRE PRINCIPALE */}
+      <div className="flex items-center justify-between gap-4">
 
-          <button
-            className="cursor-pointer max-lg:text-lg mx-1 px-2 py-1.5 
-                    bg-accent dark:bg-dark-accent text-white
-                    focus:bg-[#481A66] rounded-lg transition-colors duration-500 font-bold"
-            type="button"
-            onClick={handleLangSwitch}
-            lang={labelLang}
-          >
-            {i18n.language === "en" ? "Version Française" : "English Version"}
-          </button>
-        </div>
+        {/* IDENTITÉ AID'& MOI */}
+        <Link
+          to="/"
+          onClick={() => {
+            setIsOpen(false);
+            if (location.pathname === "/") {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="group flex shrink-0 items-center gap-2"
+          aria-label="Accueil - Garance Hauck"
+        >
+          <span className="text-3xl leading-none text-[#F23850] transition-transform duration-300 group-hover:rotate-12">
+            ✿
+          </span>
 
+          <span className="flex flex-col">
+            <span className="text-base font-extrabold tracking-tight">
+              Aid’& moi
+            </span>
+            <span className="handwritten -mt-1 text-sm text-[#FF9AA6]">
+              avec Garance
+            </span>
+          </span>
+        </Link>
+
+        {/* BOUTON MENU MOBILE */}
         <button
           type="button"
-          className="w-fit mx-3 focus:bg-main-hover focus:dark:bg-dark-main-hover rounded-lg cursor-pointer"
+          className="rounded-lg p-2 text-white transition-colors hover:bg-white/15 focus:bg-white/15 lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={t("header.mobile_btn")}
+          aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? (
-            <X
-              strokeWidth={3}
-              size={40}
-              className="text-black dark:text-white max-lg:w-9 max-lg:h-9"
-              aria-label={t("header.open_menu")}
-            />
+            <X size={28} strokeWidth={2.5} />
           ) : (
-            <Menu
-              strokeWidth={3}
-              size={40}
-              className="text-black dark:text-white max-lg:w-9 max-lg:h-9"
-              aria-label={t("header.close_menu")}
-            />
+            <Menu size={28} strokeWidth={2.5} />
           )}
         </button>
-      </div>
 
-      <div
-        className={`${
-          isOpen ? "flex" : "hidden"
-        } lg:flex flex-row justify-between items-center max-lg:flex-col`}
-        style={
-          isOpen
-            ? {
-                overflowY: "auto",
-                maxHeight: "100vh",
-                WebkitOverflowScrolling: "touch",
-              }
-            : undefined
-        }
-      >
-        <div className="flex flex-row items-center justify-between my-1 mx-4 max-lg:hidden">
-          <SettingsBtns />
-
-          <button
-            className="flex flex-row items-center
-                      cursor-pointer mx-2 max-lg:mx-0 px-5 py-1.5 
-                    bg-accent dark:bg-dark-accent text-white
-                    hover:bg-accent-hover focus:bg-accent-hover hover:dark:bg-dark-accent-hover focus:dark:bg-dark-accent-hover rounded-lg transition-colors duration-500 pulse-on-hover text-xl font-bold"
-            type="button"
-            lang={labelLang}
-            onClick={handleLangSwitch}
-          >
-            {i18n.language === "en" ? "Version Française" : "English Version"}
-          </button>
-        </div>
-
+        {/* NAVIGATION DESKTOP */}
         <nav
-          aria-label={
-            i18n.language === "fr" ? "navigation principale" : "main navigation"
-          }
-          className="lg:mr-2.5 max-lg:w-full max-lg:text-center max-lg:text-xl max-lg:mt-10 max-xl:text-2xl"
+          aria-label="Navigation principale"
+          className="hidden lg:block"
         >
-          <ul className="flex font-bold max-lg:flex max-lg:flex-col text-nowrap">
-            <li className="mx-2 px-2 py-1 rounded-lg transition-colors duration-500 hover:bg-main-hover max-lg:py-3.5 focus:bg-main-hover hover:dark:bg-dark-main-hover focus:dark:bg-dark-main-hover max-lg:rounded-none max-lg:mx-0">
-              <a href="#home-section" onClick={() => setIsOpen(false)}>
-                {t("header.home")}
-              </a>
-            </li>
-
-            <li className="mx-2 px-2 py-1 rounded-lg transition-colors duration-500 hover:bg-main-hover max-lg:py-3 focus:bg-main-hover hover:dark:bg-dark-main-hover focus:dark:bg-dark-main-hover max-lg:rounded-none max-lg:mx-0">
-              <a href="#about-section" onClick={() => setIsOpen(false)}>
-                {t("header.about")}
-              </a>
-            </li>
-
-            <li className="mx-2 px-2 py-1 rounded-lg transition-colors duration-500 hover:bg-main-hover max-lg:py-3 focus:bg-main-hover hover:dark:bg-dark-main-hover focus:dark:bg-dark-main-hover max-lg:rounded-none max-lg:mx-0">
-              <a href="#skills-section" onClick={() => setIsOpen(false)}>
-                {t("header.skills")}
-              </a>
-            </li>
-
-            <li className="mx-2 px-2 py-1 rounded-lg transition-colors duration-500 hover:bg-main-hover max-lg:py-3 focus:bg-main-hover hover:dark:bg-dark-main-hover focus:dark:bg-dark-main-hover max-lg:rounded-none max-lg:mx-0">
-              <a href="#projects-section" onClick={() => setIsOpen(false)}>
-                {t("header.projects")}
-              </a>
-            </li>
-
-            <li className="mx-2 px-2 py-1 rounded-lg transition-colors duration-500 hover:bg-main-hover max-lg:py-3 focus:bg-main-hover hover:dark:bg-dark-main-hover focus:dark:bg-dark-main-hover max-lg:rounded-none max-lg:mx-0">
-              <a href="#contact-section" onClick={() => setIsOpen(false)}>
-                Contact
-              </a>
-            </li>
+          <ul className="flex items-center gap-1 text-xs font-bold xl:gap-2 xl:text-sm">
+            {navItems.map((item) => (
+              <li
+                key={item.path || item.id}
+                className="rounded-lg transition-colors duration-200 hover:bg-white/15"
+              >
+                {item.path ? (
+                  <Link
+                    to={item.path}
+                    className="block px-3 py-2.5"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => handleNavigation(item.id)}
+                    className="cursor-pointer px-3 py-2.5"
+                  >
+                    {item.label}
+                  </button>
+                )}
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
+
+      {/* NAVIGATION MOBILE */}
+      {isOpen && (
+        <nav
+          aria-label="Navigation mobile"
+          className="mt-8 max-h-[calc(100vh-100px)] overflow-y-auto lg:hidden"
+        >
+          <ul className="flex flex-col items-center text-base font-bold">
+            {navItems.map((item) => (
+              <li
+                key={item.path || item.id}
+                className="w-full border-b border-white/10 text-center last:border-0"
+              >
+                {item.path ? (
+                  <Link
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-4 transition-colors hover:bg-white/10"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => handleNavigation(item.id)}
+                    className="w-full cursor-pointer px-3 py-4 transition-colors hover:bg-white/10"
+                  >
+                    {item.label}
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      {/* PETIT SOULIGNEMENT DÉCORATIF */}
+      <div className="absolute bottom-0 left-8 h-[2px] w-16 rounded-full bg-[#F23850] max-lg:hidden" />
+      
     </header>
   );
 };

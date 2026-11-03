@@ -1,125 +1,163 @@
-import { TypeAnimation } from "react-type-animation";
+
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
-import { ExternalLink } from "lucide-react";
-import { useAnimations } from "../context/AnimationContext";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  ArrowDownLeft,
+  Plus,
+} from "lucide-react";
 
 const Home = () => {
-  const { t, i18n } = useTranslation("homeAbout");
-  const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation("homeAbout");
 
-  const { animationsEnabled } = useAnimations();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const cvFile = "/assets/files/CV_Garance_Hauck.pdf";
 
   return (
-    <div
-      data-animate="stagger"
-      data-animate-lifetime="once"
-      className="relative flex flex-row items-stretch justify-center max-lg:flex-col-reverse max-lg:justify-end scroll-mt-50 animate-stagger"
+    <section
       id="home-section"
+      className="relative scroll-mt-24 px-4 pb-5 pt-20 md:px-8 md:pt-20"
     >
-      <img
-        src="/assets/vectors/smallSquares.svg"
-        alt=""
-        className="absolute w-28 max-lg:w-24 max-md:w-20 max-sm:w-16 h-auto top-10 max-lg:top-0 max-md:top-0 max-sm:top-0 right-0 max-lg:right-37 max-md:right-28 max-sm:right-8 block dark:hidden object-contain pointer-events-none transition-all duration-700 ease-out alive animate-item"
-      />
 
-      <img
-        src="/assets/vectors/smallSquaresDark.svg"
-        alt=""
-        className="absolute w-28 max-lg:w-24 max-md:w-20 max-sm:w-16 h-auto top-10 max-lg:top-0 max-md:top-0 max-sm:top-0 right-0 max-lg:right-37 max-md:right-28 max-sm:right-8 hidden dark:block object-contain pointer-events-none transition-all duration-700 ease-out alive animate-item"
-      />
 
-      <img
-        src="https://storage.googleapis.com/devwebmaha/portfolio/smallJelly.webp"
-        alt=""
-        data-animate
-        className="absolute w-32 max-lg:w-22 max-md:w-16 max-sm:w-16 h-auto top-18 max-lg:top-5 max-md:top-4 right-2 max-lg:right-40 max-md:right-32 max-sm:right-9 rotate-10 object-contain pointer-events-none transition-all duration-700 ease-out alive float animate-item slide-from-right"
-        aria-hidden="true"
-      />
+{/* Bandeau portfolio en construction */}
+<div className="mx-auto mb-5 flex w-fit max-w-[95%] items-center gap-3 rounded-full border border-[#F23850]/20 bg-[#FFF0F2] px-4 py-2.5 text-[#1B00C9] shadow-sm">
+  <span className="text-lg text-[#F23850]">✿</span>
+  <p className="text-center text-xs font-medium leading-relaxed">
+    <span className="font-bold">Site web en construction !</span>{" "}
+    Le site évolue progressivement, certains contenus seront bientôt complétés.
+  </p>
+</div>
 
-      <div className="relative w-3/4 flex items-center justify-center max-sm:w-full max-md:w-3/4 max-lg:w-7/12 max-lg:mx-auto animate-item">
-        <img
-          src="/assets/vectors/homeSquares.svg"
-          alt=""
-          className="p-8 max-lg:p-2 max-lg:mt-10 object-contain max-lg:w-full block dark:hidden transition-all duration-700 ease-out alive animate-item float"
+      
+      <div className="relative mx-auto min-h-[440px] max-w-7xl overflow-hidden rounded-[1.5rem] bg-[#1B00C9] text-white md:min-h-[470px]">
+
+        {/* Décorations graphiques */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full border border-white/20 md:h-80 md:w-80"
         />
 
-        <img
-          src="/assets/vectors/homeSquaresDark.svg"
-          alt=""
-          className="p-8 max-lg:p-2 max-lg:mt-10 object-contain max-lg:w-full hidden dark:block transition-all duration-700 ease-out alive animate-item float"
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-8 -top-12 h-48 w-48 rounded-full border border-white/20 md:h-60 md:w-60"
         />
 
-        <img
-          src="https://storage.googleapis.com/devwebmaha/portfolio/Maha.webp"
-          alt=""
-          data-animate
-          className={`absolute w-[86%] max-lg:w-full p-8 object-contain transition-all duration-1000 ease-out alive rounded-[3rem]
-            ${
-              mounted
-                ? "translate-x-0 opacity-100 scale-100"
-                : "-translate-x-12 opacity-0 scale-95"
-            }`}
+        <Plus
+          aria-hidden="true"
+          className="absolute right-8 top-16 h-6 w-6 text-white/70 md:right-16 md:top-24"
         />
+
+        <span className="handwritten absolute right-8 top-28 rotate-6 text-lg text-white/80 md:right-20 md:top-36 md:text-xl">
+          Bienvenue !
+        </span>
+        
+
+        <div className="relative z-10 grid min-h-[440px] items-center gap-6 px-6 py-9 md:min-h-[470px] md:grid-cols-[1.3fr_0.7fr] md:px-12 md:py-10 lg:px-16">
+
+          {/* Texte de présentation */}
+          <div className="max-w-2xl">
+
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
+              Ergothérapie · Technologie · Handicap
+            </p>
+
+            <p className="mb-2 text-sm text-white/85 md:text-base">
+              {t("home.1")}
+            </p>
+
+            <h1 className="mb-4 text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl lg:text-7xl">
+              Garance
+              <br />
+              <span className="text-[#F23850]">Hauck.</span>
+            </h1>
+
+            <p className="mb-5 max-w-lg text-sm leading-relaxed text-white/85 md:text-base">
+              Ergothérapeute de formation et diplômée d'un Master
+              Technologie et Handicap, je m'intéresse aux solutions
+              qui favorisent l'autonomie et rendent la technologie
+              accessible à tous.
+            </p>
+
+            <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+
+              <a
+                href="#about-section"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#1B00C9] transition hover:bg-[#F5F5F7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                Découvrir mon parcours
+                <ArrowDownRight size={16} />
+              </a>
+
+              <a
+                href={cvFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/50 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                Consulter mon CV
+                <ArrowUpRight size={16} />
+              </a>
+
+            </div>
+
+            {/* Petite annotation */}
+            <div className="mt-4 flex items-center gap-2">
+              <ArrowDownLeft
+                aria-hidden="true"
+                size={21}
+                className="text-[#F23850]"
+              />
+              <p className="handwritten text-lg text-white/90 md:text-xl">
+                Et si on faisait connaissance ?
+              </p>
+            </div>
+          </div>
+
+          {/* Visuel */}
+          <div className="relative mx-auto flex w-full max-w-[240px] items-center justify-center md:max-w-xs">
+
+            <div
+              aria-hidden="true"
+              className="absolute h-52 w-52 rotate-12 rounded-[2rem] border border-white/50 md:h-64 md:w-64"
+            />
+
+            <div className="relative flex aspect-square w-44 items-center justify-center rounded-[1.5rem] bg-white p-4 text-[#1B00C9] shadow-xl md:w-60">
+              <div className="flex h-full w-full flex-col items-center justify-center rounded-[1.25rem] border border-[#1B00C9]/15">
+                <span className="text-6xl font-bold tracking-tight md:text-7xl">
+                  GH
+                </span>
+
+                <span className="mt-2 text-center text-[10px] font-bold uppercase tracking-[0.15em] md:text-xs">
+                  Innovation & accessibilité
+                </span>
+              </div>
+            </div>
+
+            <div className="absolute -bottom-3 -right-2 rounded-xl bg-[#F23850] px-3 py-2 text-xs font-bold text-white shadow-lg md:-right-4 md:text-sm">
+              Des idées aux usages
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      <div className="w-full h-[calc(100vh-60vh)] my-auto flex flex-col justify-between max-lg:h-full animate-item">
-        <p className="p-2">
-          <span>{t("home.1")} </span>
+      {/* Accès rapide aux projets */}
+      <div className="mx-auto mt-3 flex max-w-7xl flex-col items-start justify-between gap-2 px-2 sm:flex-row sm:items-center">
 
-          <br />
-
-          <span className="text-2xl max-lg:text-xl font-semibold inline-block mb-6">
-            Maha Bourada
-          </span>
-
-          <br />
-
-          {animationsEnabled ? (
-            <TypeAnimation
-              key={i18n.language}
-              sequence={[
-                t("home.2"),
-                1000,
-                t("home.3"),
-                1000,
-                t("home.4"),
-                1000,
-              ]}
-              wrapper="span"
-              speed={30}
-              className="text-3xl max-lg:text-2xl font-bold"
-              repeat={Infinity}
-              aria-hidden="true"
-            />
-          ) : (
-            <span className="text-3xl max-lg:text-2xl font-bold inline-flex flex-col gap-y-3.5 w-fit max-w-full">
-              <span>{t("home.2")}</span>
-              <span>{t("home.3")}</span>
-              <span>{t("home.4")}</span>
-            </span>
-          )}
-
-          <span className="sr-only">
-            {t("home.2")} {t("home.3")} {t("home.4")}
-          </span>
+        <p className="text-xs font-medium text-[#171717]/65 md:text-sm">
+          Explorer mes projets et réalisations
         </p>
 
         <a
-          href={`/assets/files/${i18n.language === "en" ? "CV_Maha_Bourada_english.pdf" : "CV_Maha_Bourada_français.pdf"}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-row items-center ml-auto mr-5 max-lg:mx-auto w-fit cursor-pointer mx-2 px-10 py-1 bg-accent dark:bg-dark-accent text-white hover:bg-accent-hover focus:bg-accent-hover hover:dark:bg-dark-accent-hover focus:dark:bg-dark-accent-hover  rounded-xl transition-colors duration-500 leading-normal tracking-widest text-2xl max-lg:text-xl font-bold max-lg:px-12 max-lg:py-1.5 max-lg:focus:bg-accent-hover pulse-on-hover animate-item"
+          href="#projects-section"
+          className="arrow-link focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          <span className="mr-2 mt-1">CV</span>
-          <ExternalLink size={22} color="#DCDCDC" strokeWidth={2.25} />
+          Voir les projets
+          <ArrowDownRight size={16} />
         </a>
+
       </div>
-    </div>
+    </section>
   );
 };
 
