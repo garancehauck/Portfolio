@@ -1,0 +1,13 @@
+{
+  "home": {
+    "title": "Accueil",
+    "1": "Bonjour, je suis",
+    "2": "Ergothérapeute",
+    "3": "Étudiante en Master Technologie et Handicap",
+    "4": "Passionnée par l'innovation et l'accessibilité"
+  },
+  "about": {
+    "title": "À propos",
+    "content": "Ergothérapeute de formation et étudiante en Master MIASHS, parcours Technologie et Handicap, je m'intéresse à la conception de solutions qui favorisent l'autonomie et la participation de chacun. À travers mes projets en innovation, domotique, technologies d'assistance et accessibilité numérique, je cherche à faire le lien entre les besoins des personnes, les usages et les possibilités offertes par la technologie."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Mes projets",
+  "seeMore": "Voir les autres projets",
+  "seeLess": "Réduire",
+  "next": "Projet suivant",
+  "previous": "Projet précédent",
+  "git_label": "Voir le code sur GitHub",
+  "web_label": "Découvrir le projet",
+  "linkedin_label": "Voir le projet sur LinkedIn",
+  "projects": [
+    {
+      "name": "Grand Oral Citoyen",
+      "path": "",
+      "image": "accueil_GOC.png",
+      "tech": "Développement web · Projet réalisé dans le cadre du Master",
+      "link": "/projets/grand-oral-citoyen",
+      "priority": true
+    },
+    {
+      "name": "Ceinture lombaire",
+      "path": "",
+      "image": "proto_final_lombaire.png",
+      "tech": "Conception et fabrication artisanale · Modélisation et impression 3D",
+      "link": "/projets/ceintures-dos",
+      "priority": true
+    },
+    {
+      "name": "Bra(s)vo – Orthèse connectée",
+      "path": "",
+      "image": "schema_brasvo.png",
+      "tech": "Conception d'une orthèse connectée · Projet réalisé dans le cadre du Master",
+      "link": "/projets/brasvo",
+      "priority": true
+    },
+    {
+      "name": "Mémoire – Accessibilité des outils de CAA",
+      "path": "",
+      "image": "interface_CAA.png",
+      "tech": "Accessibilité numérique · Recherche · Assistant de personnalisation",
+      "link": "/projets/memoire-caa",
+      "priority": true
+    }
+  ]
+}
