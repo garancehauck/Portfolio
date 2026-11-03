@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route, useLocation} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 import Header from "./components/navigation/Header";
@@ -29,15 +29,16 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <BrowserRouter>
-     <ScrollToTop />
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
+
       <div className="flex min-h-screen flex-col bg-background text-black font-main text-base font-medium tracking-normal leading-relaxed">
         <Header />
 
         <main
-  role="main"
-  className="mt-24 mx-auto w-full max-w-7xl px-8 flex-grow max-lg:mt-24 max-lg:px-5"
->
+          role="main"
+          className="mt-24 mx-auto w-full max-w-7xl px-8 flex-grow max-lg:mt-24 max-lg:px-5"
+        >
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/projets/grand-oral-citoyen" element={<GrandOralCitoyen />} />
@@ -47,8 +48,8 @@ function App() {
             <Route path="/aid-et-moi" element={<AidEtMoi />} />
           </Routes>
         </main>
-        <BackToTop />
 
+        <BackToTop />
         <Footer />
       </div>
     </BrowserRouter>
