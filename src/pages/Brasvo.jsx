@@ -76,15 +76,15 @@ const collaborators = [
 
 const gallery = [
   {
-    image: "orthese.png",
+    image: `${import.meta.env.BASE_URL}assets/images/orthese.png`,
     description: "Vue d’ensemble du prototype d’orthèse",
   },
   {
-    image: "interface_application.png",
+    image: `${import.meta.env.BASE_URL}assets/images/interface_application.png`,
     description: "Page d’accueil de l’application",
   },
   {
-    image: "exemple_jeu.png",
+    image: `${import.meta.env.BASE_URL}assets/images/exemple_jeu.png`,
     description: "Exemple de jeu présent dans l’application",
   },
 ];

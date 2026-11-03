@@ -47,17 +47,17 @@ const placeholders = [
 const visuals = [
   {
     label: "Premier prototype",
-    image: "/assets/images/proto_1_lombaire.png",
+    image: `${import.meta.env.BASE_URL}assets/images/proto_1_lombaire.png`,
   },
 
   {
     label: "Deuxième prototype",
-    image: "/assets/images/proto_2_lombaire.png",
+    image: `${import.meta.env.BASE_URL}assets/images/proto_2_lombaire.png`,
   },
 
   {
     label: "Version actuelle",
-    image: "/assets/images/proto_final_lombaire.png",
+    image: `${import.meta.env.BASE_URL}assets/images/proto_final_lombaire.png`,
   },
 ];
 

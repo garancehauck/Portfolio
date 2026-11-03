@@ -59,19 +59,19 @@ const adminFeatures = [
 const gallery = [
   {
     label: "Page d’accueil",
-    image: "accueil_GOC.png",
+    image: `${import.meta.env.BASE_URL}assets/images/accueil_GOC.png`,
   },
   {
     label: "Une page intérieure",
-    image: "page_interieure_GOC.png",
+    image: `${import.meta.env.BASE_URL}assets/images/page_interieure_GOC.png`,
   },
   {
     label: "Espace de connexion",
-    image: "connexion_GOC.png",
+    image: `${import.meta.env.BASE_URL}assets/images/connexion_GOC.png`,
   },
   {
     label: "Gestion des événements ou des photos",
-    image: "ajout_photos_admin.png",
+    image: `${import.meta.env.BASE_URL}assets/images/ajout_photos_admin.png`,
   },
 ];
 
