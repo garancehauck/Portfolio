@@ -8,7 +8,7 @@ const academicWorks = [
     description:
       "Un travail de recherche autour de la participation de l’enfant dans ses activités de vie quotidienne et dans son environnement à domicile.",
     accent: "Ergothérapie",
-    file: "/assets/files/MemoireErgotherapie.pdf",
+    file: `${import.meta.env.BASE_URL}assets/files/MemoireErgotherapie.pdf`,
   },
   {
     type: "Master MIASHS — Technologie et Handicap",
@@ -17,7 +17,7 @@ const academicWorks = [
     description:
       "Un travail de recherche consacré à l’accessibilité des outils numériques de CAA pour des jeunes présentant une déficience visuelle, dans des contextes d’accompagnement en IEM et en MAS.",
     accent: "Accessibilité numérique",
-    file: "/assets/files/MemoireCAA.pdf",
+    file: `${import.meta.env.BASE_URL}assets/files/MemoireCAA.pdf`,
   },
 ];
 
