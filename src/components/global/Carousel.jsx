@@ -32,26 +32,22 @@ const Carousel = ({ projects = [] }) => {
         aria-live="polite"
       >
         <div className="grid md:grid-cols-2">
-          <div className="relative flex min-h-64 items-center justify-center overflow-hidden bg-[#F5F5F7] p-6 md:min-h-[350px]">
-            {project.path ? (
-              <img
-                src={`/assets/images/${project.path}`}
-                alt=""
-                className="h-full max-h-[350px] w-full object-contain"
-              />
-            ) : (
-              <img
-                src={`/assets/images/${project.image}`}
-                alt={`Illustration du projet ${project.name}`}
-                className="h-full max-h-[350px] w-full rounded-2xl object-contain"
-              />
-            )}
+          
+<div className="relative flex min-h-64 items-center justify-center overflow-hidden bg-[#F5F5F7] p-6 md:min-h-[350px]">
+  {(project.image || project.path) && (
+    <img
+      src={`${import.meta.env.BASE_URL}assets/images/${project.image || project.path}`}
+      alt={`Illustration du projet ${project.name}`}
+      className="h-full max-h-[350px] w-full rounded-2xl object-contain"
+    />
+  )}
 
-            <span className="absolute left-5 top-5 rounded-full bg-[#1B00C9] px-4 py-2 text-xs font-bold text-white">
-              {String(current + 1).padStart(2, "0")} /{" "}
-              {String(projects.length).padStart(2, "0")}
-            </span>
-          </div>
+  <span className="absolute left-5 top-5 rounded-full bg-[#1B00C9] px-4 py-2 text-xs font-bold text-white">
+    {String(current + 1).padStart(2, "0")} /{" "}
+    {String(projects.length).padStart(2, "0")}
+  </span>
+</div>
+
 
           <div className="flex flex-col justify-center p-7 md:p-10">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.15em] text-[#F23850]">

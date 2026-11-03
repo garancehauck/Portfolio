@@ -125,7 +125,13 @@ const Projects = () => {
                       {/* Image */}
                       <div className="relative h-44 overflow-hidden bg-[#F5F5F7]">
                         <img
-                          src={`/assets/images/${project.path}`}
+                          src={
+                              project.image
+                                ? `${import.meta.env.BASE_URL}assets/images/${project.image}`
+                                : project.path
+                                  ? `${import.meta.env.BASE_URL}assets/images/${project.path}`
+                                  : undefined
+                            }
                           alt=""
                           loading="lazy"
                           className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
