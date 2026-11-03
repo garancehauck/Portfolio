@@ -302,7 +302,7 @@ const GrandOralCitoyen = () => {
               className="soft-card overflow-hidden p-3"
             >
               <img
-                src={`/assets/images/${item.image}`}
+                 src={item.image}
                 alt={`Capture d’écran : ${item.label} du site Grand Oral Citoyen`}
                 className="h-52 w-full rounded-xl bg-[#F5F5F7] object-contain sm:h-60"
               />

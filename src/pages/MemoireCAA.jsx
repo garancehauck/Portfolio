@@ -15,7 +15,7 @@ import {
 
 // Dépose le mémoire PDF dans public/assets/files/
 // et adapte ce chemin si nécessaire.
-const memoPdf = "/assets/files/Memoire_Garance_Hauck.pdf";
+const memoPdf = `${import.meta.env.BASE_URL}assets/files/Memoire_Garance_Hauck.pdf`
 
 const methodology = [
   {
@@ -126,7 +126,7 @@ export default function MemoireCAA() {
           </div>
 
           <a
-            href="/assets/files/MemoireCAA.pdf"
+            href={`${import.meta.env.BASE_URL}assets/files/MemoireCAA.pdf`}
             target="_blank"
             rel="noreferrer"
             className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs font-bold text-[#100A45] transition hover:-translate-y-0.5"
@@ -353,7 +353,7 @@ export default function MemoireCAA() {
           </p>
 
           <a
-            href="/assets/files/MemoireCAA.pdf"
+            href={`${import.meta.env.BASE_URL}assets/files/MemoireCAA.pdf`}
             target="_blank"
             rel="noreferrer"
             className="arrow-link"

@@ -320,7 +320,7 @@ export default function Brasvo() {
               className="overflow-hidden rounded-2xl bg-white p-3"
             >
               <img
-                src={`/assets/images/${item.image}`}
+                 src={item.image}
                 alt={item.description}
                 className="h-56 w-full rounded-xl object-contain sm:h-64"
               />

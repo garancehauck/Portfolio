@@ -10,7 +10,7 @@ import {
 const Home = () => {
   const { t } = useTranslation("homeAbout");
 
-  const cvFile = "/assets/files/CV_Garance_Hauck.pdf";
+  const cvFile = `${import.meta.env.BASE_URL}assets/files/CV_Garance_Hauck.pdf`
 
   return (
     <section
